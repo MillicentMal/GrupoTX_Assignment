@@ -7,23 +7,43 @@
     <title>Document</title>
 </head>
 <body>
-    {{% for contact in contacts %}}
-    <div style="display:flex;">
-        {{ contact  }}
+    <h1>
+        DISPLAYS ALL ADDED USERS SO THAT YOU CAN FIND ANYONE IN YOUR AREA
+    </h1>
+    <a href="{{url_for('add_contact')}}">Add new Contact</a>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+         
+            <th >First Name</th>
+            <th >Last Name</th>
+            <th >Email</th>
+            <th >Address</th>
+            <th >City</th>
+            <th>Disctrict</th>
+            <th>Country</th>
+            <th>Phone</th>
+  
 
-    </div>
-    {{% endfor %}}
-    <form method="POST" action="/contacts">
-        <div>{{ form.first_name.label }}: {{ form.first_name() }}</div>
-        <div>{{ form.last_name.label }}: {{ form.last_name() }}</div>
-        <div>{{ form.email.label }}: {{ form.email() }}</div>
-        <div>{{ form.address_line.label }}: {{ form.address_line() }}</div>
-        <div>{{ form.city.label }}: {{ form.city() }}</div>
-        <div>{{ form.district.label }}: {{ form.district() }}</div>
-        <div>{{ form.country.label }}: {{ form.country() }}</div>
-        <div>{{ form.phone.label }}: {{ form.phone() }}</div>
-        <div>{{ form.submit.label }}: {{ form.submit() }}</div>
-        
-    </form>
+            
+          </tr>
+        </thead>
+        <tbody>        
+    {% for contact in contacts %}
+
+        <td>{{ contact.first_name }} </td>
+        <td>{{ contact.last_name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.address_line }}</td>
+        <td>{{ contact.city }}</td>
+        <td>{{ contact.district }} </td>
+        <td>{{ contact.country }}</td>
+        <td>{{ contact.phone }}</td>
+ 
+</tr>
+{% endfor %} 
+       </tr>
+     </tbody>
+   </table>
 </body>
 </html>
