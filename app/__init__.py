@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 db.init_app(app)
 secret_key = secrets.token_urlsafe(16)
 app.config['SECRET_KEY'] = secret_key
-app.config.setdefault('SQLALCHEMY_DATABASE_URI', "mysql+pymysql://millicent:Lethabo2016.@localhost/address_book")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
 app.config['SQLALCHEMLY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 db.init_app(app)
