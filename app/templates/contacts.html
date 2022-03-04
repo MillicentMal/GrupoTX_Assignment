@@ -11,7 +11,13 @@
         DISPLAYS ALL ADDED USERS SO THAT YOU CAN FIND ANYONE IN YOUR AREA
     </h1>
     <a href="{{url_for('add_contact')}}">Add new Contact</a>
-    <table class="table table-dark">
+
+    <form class="search" method="GET">
+        <div  class="input">
+          <input type="text" name="search" id="search" placeholder="Search contact by name or surname">
+        </div>
+    </form>
+    <table>
         <thead>
           <tr>
          

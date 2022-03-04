@@ -44,7 +44,12 @@ def contacts():
     """
     displays all contacts
     """
-    contacts = Contact.query.all()
+    search = request.args.get('search')
+    if search:
+        contacts = Contact.query.filter(Contact.first_name.contains(search) | Contact.last_name.contains(search))
+
+    else:
+        contacts = Contact.query.all()
     return render_template('contacts.html', contacts=contacts)
 
 # @app.route('/delete_contact/<int:contact_id>')
@@ -77,7 +82,7 @@ class Contact(db.Model):
     first_name = db.Column(db.String(256), unique=False)
     last_name = db.Column(db.String(256), unique=False)
     phone_number = db.Column(db.String(256), nullable=True)
-    email = db.Column(db.String(256), unique=True, nullable=True)
+    email = db.Column(db.String(256), nullable=True)
     country = db.Column(db.String(256))
     city = db.Column(db.String(256))
     district = db.Column(db.String(256), nullable=True)
