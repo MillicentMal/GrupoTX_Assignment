@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{% for contact in contacts %}}
+    <div style="display:flex;">
+        {{ contact  }}
+
+    </div>
+    {{% endfor %}}
+    <form method="POST" action="/contacts">
+        <div>{{ form.first_name.label }}: {{ form.first_name() }}</div>
+        <div>{{ form.last_name.label }}: {{ form.last_name() }}</div>
+        <div>{{ form.email.label }}: {{ form.email() }}</div>
+        <div>{{ form.address_line.label }}: {{ form.address_line() }}</div>
+        <div>{{ form.city.label }}: {{ form.city() }}</div>
+        <div>{{ form.district.label }}: {{ form.district() }}</div>
+        <div>{{ form.country.label }}: {{ form.country() }}</div>
+        <div>{{ form.phone.label }}: {{ form.phone() }}</div>
+        <div>{{ form.submit.label }}: {{ form.submit() }}</div>
+        
+    </form>
+</body>
+</html>
