@@ -15,3 +15,4 @@ Add an admin that would vet any new additions
 Allow for edits, and deletes that would still go through the admin
 Pagination to handle more and more additions of contacts
 Search button to actually search all these contacts 
+Seperation of concerns/modularization
