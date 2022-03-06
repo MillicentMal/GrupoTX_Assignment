@@ -15,7 +15,7 @@ from wtforms.fields.simple import EmailField, SubmitField, FileField
 
 # app creation adn configuration
 app = Flask(__name__)
-# failing to deploy
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "secret_key"
@@ -48,13 +48,7 @@ def add_contact():
             return render_template('token.html', token=token)
     return render_template('add_contact.html', form=form)
 
-# @app.route('/contact', methods=['GET', 'POST'])
-# def contact():
-#     token = request.args.get('token')
-#     if token:
-#         contact = contact.query.filter(Contact.first_name.contains(token))
-#         return render_template('contact_operations.html', contact=contact)
-        
+       
 
 @app.route('/edit_contact/<int:id>', methods=['GET', 'POST'])
 def edit_contact(id):
