@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>
-        DISPLAYS ALL ADDED USERS SO THAT YOU CAN FIND ANYONE IN YOUR AREA
+        DISPLAYS ALL ADDED contactS SO THAT YOU CAN FIND ANYONE IN YOUR AREA
     </h1>
     <a href="{{url_for('add_contact')}}">Add new Contact</a>
-
+    
     <form class="search" method="GET">
         <div  class="input">
           <input type="text" name="search" id="search" placeholder="Search contact by name or surname">
@@ -29,9 +29,8 @@
             <th>Disctrict</th>
             <th>Country</th>
             <th>Phone</th>
-  
-
-            
+            <th>Delete</th>
+            <th>Edit</th>        
           </tr>
         </thead>
         <tbody>        
@@ -45,10 +44,12 @@
         <td>{{ contact.district }} </td>
         <td>{{ contact.country }}</td>
         <td>{{ contact.phone }}</td>
- 
-</tr>
+        <td><a class="btn" href="/edit_contact/{{contact.id}}">Update</a></td>
+        <td><a class="btn" href="/delete_contact/{{ contact.id }}">Delete</a></td>
+
+        </tr>
 {% endfor %} 
-       </tr>
+        </tr>
      </tbody>
    </table>
 </body>

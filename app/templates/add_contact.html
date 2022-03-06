@@ -7,7 +7,12 @@
     <title>Document</title>
 </head>
 <body>
- 
+    <div>
+        <a href="{{url_for('contacts')}}">View Contacts</a>
+
+
+    </div>
+    
 
 
     <form method="POST">
@@ -22,5 +27,15 @@
         <div>{{ form.submit.label }}: {{ form.submit() }}</div>
         
     </form>
+    {% if token %}
+      <h2>
+          Please store this token safely so you can update your contact and delete it if necessary
+
+      </h2>
+      <p>
+          {{ token }}
+        
+      </p>
+    {% endif %}
 </body>
 </html>
