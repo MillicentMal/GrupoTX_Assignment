@@ -16,3 +16,8 @@ Allow for edits, and deletes that would still go through the admin
 Pagination to handle more and more additions of contacts
 Search button to actually search all these contacts 
 Seperation of concerns/modularization
+
+UPDATES
+
+Anyone can add a contact. The only difference is that upon creation, a token is generated that gives the creator update and delete rights. 
+All contacts are available publicly and can be searched using the most common attributes: name and surname. 
