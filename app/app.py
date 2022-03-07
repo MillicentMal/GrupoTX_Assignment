@@ -2,7 +2,7 @@ from email import message
 from hashlib import new
 from lib2to3.pgen2 import token
 from uuid import uuid4
-from flask import Flask
+from flask import Flask, abort
 from flask import render_template, request
 from flask.helpers import flash, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -38,8 +38,11 @@ def add_contact():
             if contact.phone_number is not None and contact.phone_number == form.phone.data:
                 return redirect(url_for('edit_contact'))                   
             else:
-                db.session.add(new_contact)
-                db.session.commit()
+                try:
+                    db.session.add(new_contact)
+                    db.session.commit()
+                except:
+                    abort(403)
                   
         else:
             db.session.add(new_contact)  
@@ -66,7 +69,10 @@ def edit_contact(id):
             contact.city = form.city.data
             contact.district = form.district.data
             contact.address_line = form.address_line.data
-            db.session.commit()
+            try:
+                db.session.commit()
+            except:
+                abort(403)
             return redirect(url_for('contacts'))   
         else:
             return redirect(url_for('contacts'))    
@@ -91,8 +97,11 @@ def delete_contact(id):
     token = request.form.get('token')
     contact = Contact.query.filter_by(token=token).first()
     if contact:
-        db.session.delete(contact)
-        db.session.commit()
+        try:
+            db.session.delete(contact)
+            db.session.commit()
+        except:
+            abort(404)
         return redirect(url_for('contacts'))
     return render_template('delete_contact.html')
 
